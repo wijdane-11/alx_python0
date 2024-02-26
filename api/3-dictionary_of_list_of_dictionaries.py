@@ -13,11 +13,20 @@ if __name__ == "__main__":
     response = requests.get(url)
     user = response.json()
 
+    if 'id' not in user:
+        print("User with ID {} not found.".format(user_id))
+        exit(1)
+
+    username = user.get('username')
+
     url = 'https://jsonplaceholder.typicode.com/todos?userId={}'.format(user_id)
     response = requests.get(url)
     todos = response.json()
 
-    username = user.get('username')
+    if not todos:
+        print("No tasks found for user with ID {}.".format(user_id))
+        exit(1)
+
     tasks = []
 
     for todo in todos:
