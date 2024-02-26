@@ -24,13 +24,16 @@ def user_info(employee_id):
 
     # Checking if the file exists before trying to read from it
     if os.path.exists(filename):
-        print("Formatting: OK (Expected True)")
+        with open(filename, 'r') as f:
+            reader = csv.reader(f)
+            num_tasks = sum(1 for row in reader) - 1  # subtract header row
+        print(f"Number of tasks in CSV: {num_tasks} (Expected {len(todo_data)})")
     else:
         print(f"Error: File '{filename}' not found.")
 
 if __name__ == "__main__":
     if len(sys.argv) != 2:
-        print("Usage: python3 main_2.py <employee_id>")
+        print("Usage: python3 main_0.py <employee_id>")
         sys.exit(1)
     
     user_info(int(sys.argv[1]))
