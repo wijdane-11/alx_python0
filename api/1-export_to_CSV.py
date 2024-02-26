@@ -22,8 +22,10 @@ def user_info(employee_id):
             writer.writerow([user_id, username, task['completed'], task['title']])
 
     # Correct number of tasks in CSV
-    num_tasks = len(todo_data)
-    print(f"Number of tasks in CSV: {num_tasks} (Expected {num_tasks})")
+    with open(filename, 'r') as f:
+        reader = csv.reader(f)
+        num_tasks = sum(1 for row in reader) - 1  # subtract header row
+    print(f"Number of tasks in CSV: {num_tasks} (Expected {len(todo_data)})")
 
 if __name__ == "__main__":
     if len(sys.argv) != 2:
