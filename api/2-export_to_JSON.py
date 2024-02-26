@@ -3,6 +3,15 @@ import requests
 import sys
 
 def user_info(employee_id):
+    """
+    Fetches employee information and todo list from a REST API and exports it to a JSON file.
+
+    Args:
+        employee_id (int): The ID of the employee.
+
+    Returns:
+        None
+    """
     # Fetching employee details
     employee_response = requests.get(f"https://jsonplaceholder.typicode.com/users/{employee_id}")
     employee_data = employee_response.json()
