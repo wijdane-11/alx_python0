@@ -1,3 +1,15 @@
+#!/usr/bin/env python3
+
+"""
+This script fetches employee information and todo list from a REST API and exports it to a JSON file.
+
+The script takes an employee ID as a command-line argument and retrieves the user's details and todo list
+from the JSONPlaceholder API. It then constructs the tasks in the required JSON format and writes them 
+to a JSON file named USER_ID.json.
+
+Usage: python3 main_0.py employee_id
+"""
+
 import json
 import requests
 import sys
