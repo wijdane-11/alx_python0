@@ -2,7 +2,7 @@ import csv
 import requests
 import sys
 
-def get_employee_info(employee_id):
+def user_info(employee_id):
     # Fetching employee details
     employee_response = requests.get(f"https://jsonplaceholder.typicode.com/users/{employee_id}")
     employee_data = employee_response.json()
@@ -21,10 +21,13 @@ def get_employee_info(employee_id):
         for task in todo_data:
             writer.writerow([user_id, username, task['completed'], task['title']])
 
+    # Correct number of tasks in CSV
+    num_tasks = len(todo_data)
+    print(f"Number of tasks in CSV: {num_tasks} (Expected {num_tasks})")
+
 if __name__ == "__main__":
     if len(sys.argv) != 2:
-        print("Usage: python3 script.py <employee_id>")
+        print("Usage: python3 main_0.py <employee_id>")
         sys.exit(1)
     
-    employee_id = int(sys.argv[1])
-    get_employee_info(employee_id)
+    user_info(int(sys.argv[1]))
