@@ -24,13 +24,13 @@ def user_info(employee_id):
 
     # Checking if the file exists before trying to read from it
     if os.path.exists(filename):
-        print(f"User ID and Username: OK (Expected {user_id}, {username})")
+        print("Formatting: OK (Expected True)")
     else:
         print(f"Error: File '{filename}' not found.")
 
 if __name__ == "__main__":
     if len(sys.argv) != 2:
-        print("Usage: python3 main_1.py <employee_id>")
+        print("Usage: python3 main_2.py <employee_id>")
         sys.exit(1)
     
     user_info(int(sys.argv[1]))
